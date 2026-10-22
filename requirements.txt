@@ -1,4 +1,4 @@
-pandas>=2.2,<4
+pandas>=3.0.6,<4
 inflate64==1.0.4
 geopandas>=1.0,<2
 pyogrio>=0.10,<1
