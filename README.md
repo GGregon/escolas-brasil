@@ -8,104 +8,74 @@ React, TypeScript, Vite, MapLibre GL e PMTiles. As geometrias são carregadas po
 
 ![Mapa da região da Barra da Tijuca e Jacarepaguá, no Rio de Janeiro, com setores censitários coloridos por renda e escolas privadas em círculos laranja](docs/imagens/mapa-rio-de-janeiro.png)
 
-*Renda média mensal por setor censitário e localização das escolas privadas no
-Rio de Janeiro. Os controles ficam no painel lateral, com o mapa em tela ampla.*
+*Barra da Tijuca e Jacarepaguá, Rio de Janeiro.*
 
 **[Funcionalidades](#-funcionalidades)** · **[Instalação](#-instalar-e-abrir)** ·
 **[Dados e indicadores](#-dados-e-interpretação)** ·
 **[Desenvolvimento](#-desenvolvimento-e-publicação)**
 
-> [!NOTE]
-> A ferramenta permite explorar o contexto do **local da escola**. A renda do
-> setor não representa a renda dos alunos, das famílias ou da própria instituição.
-
 ## ✨ Funcionalidades
 
-| Recurso | O que você pode fazer |
-| --- | --- |
-| 🔎 Busca | Encontrar cidades e escolas pelo nome e direcionar o mapa ao resultado. |
-| 🎨 Indicadores | Alternar entre seis indicadores de renda e domicílios do Censo 2022. |
-| 🎚️ Filtro por intervalo | Mostrar as escolas em setores cujo indicador está na faixa selecionada. |
-| 🏫 Detalhes da escola | Consultar código INEP, matrículas, origem das coordenadas e indicador do setor. |
-| 🫧 Círculos e agrupamentos | Comparar matrículas e explorar escolas próximas agrupadas no mapa. |
-| 🗂️ Camadas | Controlar setores, estados, municípios e escolas, incluindo as geocodificadas. |
-| 📍 Cadastro manual | Incluir uma escola informando nome, latitude e longitude. |
-| 💾 Backup | Exportar e importar os cadastros manuais entre navegadores ou computadores. |
+### 🔎 Busca e navegação
 
-### 🔎 Pesquisar e navegar
-
-Digite o nome de uma cidade ou escola no campo **Pesquisar no mapa**. A busca
-aceita nomes sem acentos; combine escola, cidade e UF para refinar os resultados.
-Você pode restringir a busca a cidades ou escolas. Selecione um resultado com
-o mouse ou pelo teclado e pressione **Enter**:
+No campo **Pesquisar no mapa**, digite o nome de uma cidade ou escola.
+A busca aceita nomes sem acentos, combinações de nome, cidade e UF e filtros
+por tipo de resultado. Clique em um resultado ou selecione pelo teclado e
+pressione **Enter**:
 
 - **Cidade:** o mapa enquadra os limites do município.
 - **Escola:** o mapa aproxima a coordenada e abre o cartão de informações.
 
 Arraste para navegar e use o scroll para ajustar o zoom. As siglas dos estados
-aparecem na visão mais distante; ao aproximar, surgem nomes de municípios e
-detalhes das ruas. Os rótulos municipais independem da camada de contornos.
+dão lugar aos nomes dos municípios ao aproximar, mesmo com os contornos ocultos.
 
 ![Busca por uma escola em Niterói, com o mapa aproximado, cartão da escola aberto e filtro de renda ativo](docs/imagens/busca-e-filtro.png)
 
-*Exemplo de busca pelo nome da escola, com detalhes da localização e filtro ativo.*
-
-### 🎚️ Filtrar escolas pelo indicador do setor
+### 🎚️ Filtro por intervalo
 
 1. Escolha o indicador no painel — por exemplo, **Renda média mensal**.
 2. Marque **Filtrar escolas pelo setor**.
 3. Arraste as **duas pontas do slider** para definir o intervalo desejado.
-4. Use **Limpar filtro** para voltar a exibir todas as escolas permitidas pelas
-   demais opções de camada.
+4. Use **Limpar filtro** para remover a restrição de intervalo.
 
 <img src="docs/imagens/filtro-intervalo.png" alt="Filtro de renda média mensal com um único slider de duas pontas, valores mínimo e máximo e botão Limpar filtro" width="341">
 
-O intervalo inclui os dois extremos. O filtro atualiza os pontos, a busca de
-escolas, os agrupamentos, seus totais de matrículas e o contador. Os setores
-fora da faixa ficam mais discretos para manter a orientação no mapa.
-Ao trocar de indicador, o intervalo volta ao domínio completo do novo indicador.
-As duas pontas também podem ser ajustadas pelo teclado.
+O intervalo inclui os extremos e atualiza pontos, busca de escolas, agrupamentos,
+totais de matrículas e contador. Setores fora da faixa ficam mais discretos.
+Trocar de indicador redefine a faixa para o domínio completo. O slider aceita
+ajustes pelo teclado e usa escala não linear para acomodar valores extremos.
 
 > [!IMPORTANT]
 > Com o filtro ativo, uma escola precisa estar associada a **um único setor**
 > com valor publicado dentro do intervalo. Pontos sem associação, com associação
-> ambígua ou com indicador ausente ficam fora do resultado. O slider usa escala
-> não linear para facilitar a seleção de faixas mesmo com valores extremos.
+> ambígua ou com indicador ausente ficam fora do resultado.
 
-### 🏫 Consultar uma escola
+### 🏫 Detalhes das escolas
 
-Clique no círculo da escola para abrir o **pop-up junto ao ponto selecionado**.
-O cartão apresenta nome, município/UF, código INEP, matrículas de 2025, origem
-das coordenadas e, quando disponível, código do setor e valor do indicador.
-Quando há escolas na mesma coordenada, o seletor do cartão permite alternar
-entre elas.
+Clique no círculo da escola para abrir o **pop-up** com nome, município/UF,
+código INEP, matrículas de 2025, origem das coordenadas e, quando disponível,
+setor e valor do indicador. Um seletor permite alternar entre escolas na mesma
+coordenada.
 
 ![Pop-up da Escola Eleva no Rio de Janeiro, mostrando código INEP, matrículas, origem das coordenadas e renda média mensal do setor](docs/imagens/detalhes-escola.png)
 
-*O cartão mantém as informações próximas da escola, sem ocupar o painel de controles.*
-
 A **área dos círculos** representa o total conhecido de matrículas da educação
-básica. Escolas sem esse total usam um marcador de referência. Ao afastar o
-mapa, escolas próximas podem formar agrupamentos; clique neles para aproximar.
-Os agrupamentos somam matrículas conhecidas, com escala reduzida e tamanho limitado.
+básica (`QT_MAT_BAS`), não alunos distintos. Escolas sem esse total usam um
+marcador de referência. Escolas próximas formam agrupamentos ao afastar o mapa;
+clique neles para aproximar. Os agrupamentos somam matrículas conhecidas, com
+escala própria e tamanho limitado.
 
-> [!NOTE]
-> `QT_MAT_BAS` conta **matrículas**, não alunos distintos. Os tamanhos dos
-> agrupamentos e dos pontos individuais usam escalas diferentes.
+### 🗂️ Indicadores e camadas
 
-### 🗂️ Controlar camadas e cores
+Escolha um dos [seis indicadores do Censo](#indicadores-disponíveis) e controle
+a exibição de **setores censitários**, **estados**, **municípios** e **escolas
+privadas**. **Incluir geocodificadas** controla os pontos com posição aproximada.
 
-Ative ou oculte **setores censitários**, **estados**, **municípios** e
-**escolas privadas**. A opção **Incluir geocodificadas** controla os pontos
-com posição aproximada; a origem fica disponível no cartão da escola.
+A legenda usa **verde para valores menores, azul para maiores e branco para
+ausência de informação**. O preenchimento respeita os limites dos setores, sem
+suavização, e fica mais transparente ao aproximar para facilitar a leitura das ruas.
 
-A legenda usa **verde para valores menores e azul para maiores**.
-Setores sem informação aparecem em **branco**. As cores seguem classes do
-indicador escolhido, preservam os limites dos setores e não têm suavização.
-Ao aproximar, o preenchimento fica mais transparente para facilitar a leitura
-das ruas na base Bright.
-
-### 📍 Cadastrar escolas e guardar backups
+### 📍 Cadastro manual e backup
 
 Abra **Adicionar escola** e informe **nome, latitude e longitude**, em graus
 decimais. O ponto passa a aparecer no mapa e na busca. Cadastros manuais não
@@ -116,18 +86,15 @@ para recuperá-los ou transferi-los para outro navegador ou computador.
 
 > [!WARNING]
 > Os cadastros manuais ficam **somente no navegador**, vinculados ao endereço
-> e à porta da aplicação. Não existe sincronização ou banco compartilhado.
-> Exporte um backup antes de limpar os dados do navegador ou mudar de endereço.
+> e à porta da aplicação, sem sincronização. Exporte um backup antes de limpar
+> os dados do navegador ou mudar de endereço.
 
 ## 🚀 Instalar e abrir
 
-Requisitos: Git, **Node.js 22.12+ ou 24+**, npm e **Python 3.11+** para instalar os
-dados. Internet é necessária para download e para a base Bright/OpenFreeMap.
-Use um navegador atualizado com WebGL.
-
-> [!IMPORTANT]
-> O repositório e o pacote de dados são **públicos**. Você pode clonar o projeto
-> e baixar a release sem convite, login ou token do GitHub.
+Requisitos: Git, **Node.js 22.12+ ou 24+**, npm, **Python 3.11+** e navegador com
+WebGL. Reserve **2 GB livres** para instalar o pacote de dados de aproximadamente
+**414 MB**. Internet é necessária para download e para a base Bright/OpenFreeMap.
+O repositório e os dados são públicos; não é necessário login, token ou `.env`.
 
 ```sh
 git clone https://github.com/GGregon/escolas-brasil.git
@@ -140,12 +107,9 @@ npm run dev
 
 Abra **http://127.0.0.1:5173/** e mantenha o terminal aberto. No Windows, após
 instalar os dados, também é possível abrir `iniciar-mapa.cmd` com dois cliques.
-Não abra `index.html` diretamente.
 
 O instalador baixa o pacote da [release dados-v1](https://github.com/GGregon/escolas-brasil/releases/tag/dados-v1)
 e verifica tamanho e SHA-256 do ZIP e de cada arquivo antes da instalação.
-O pacote tem aproximadamente **414 MB**; reserve pelo menos **2 GB livres**
-para download, validação e instalação. Os dados ficam separados do código.
 
 Para instalar sem o download automático, baixe o ZIP pela página da release
 e execute a partir da raiz:
@@ -153,11 +117,6 @@ e execute a partir da raiz:
 ```sh
 python scripts/baixar_dados.py --arquivo "caminho/dados-mapa-v1.zip"
 ```
-
-O mantenedor também pode compartilhar esse mesmo ZIP. Não há `.env` obrigatório,
-token ou variável `VITE_*` para configurar. O instalador também aceita credenciais
-Git HTTPS ou `GITHUB_TOKEN` para cópias privadas do projeto; nunca salve tokens
-em arquivos ou no Git.
 
 ## 📊 Dados e interpretação
 
@@ -186,12 +145,12 @@ dispersão e têm unidades ao quadrado; não são valores de renda ou contagens.
 | Coordenadas das escolas | Ipea/geobr 2025, release v2.0.0 |
 | Ruas e base Bright | OpenFreeMap, OpenMapTiles e OpenStreetMap |
 
-A renda é do responsável, **não renda domiciliar per capita**. A renda do setor
-da escola não representa a renda de seus alunos ou famílias. Das 42.454 escolas
-privadas em atividade, 11.401 não têm coordenadas aceitas para o mapa.
-Geocodificações são aproximadas. Ausência ou supressão nunca vira renda zero.
-A associação escola–setor usa a malha de exibição simplificada e exclui casos
-ambíguos ou sem informação.
+> [!NOTE]
+> A renda é do responsável, **não renda domiciliar per capita**, e não representa
+> a renda dos alunos ou das famílias da escola. Das 42.454 escolas privadas em
+> atividade, 11.401 não têm coordenadas aceitas para o mapa. Geocodificações são
+> aproximadas. A associação escola–setor usa malha simplificada e exclui casos
+> ambíguos. Valores ausentes ou suprimidos nunca são convertidos em zero.
 
 [Dicionário e fontes](docs/DADOS.md) · [Cobertura e precisão](docs/ESCOLAS.md)
 
@@ -212,7 +171,6 @@ pelo mapa. O preview abre em **http://127.0.0.1:4173/**.
 
 Para hospedar, sirva `frontend/dist/` em HTTPS com **HTTP Range
 (`206 Partial Content`)** para `.pmtiles`. Preserve os créditos do mapa.
-O repositório e sua release públicos não criam um site hospedado por si só.
 
 [Pipeline e validações](docs/DESENVOLVIMENTO.md) · [Contribuir](CONTRIBUTING.md) ·
 [Segurança](SECURITY.md) · [Revisão](docs/REVISAO_PUBLICACAO.md) ·
@@ -231,24 +189,7 @@ Dados brutos, arquivos preparados, ambientes locais, dependências instaladas,
 backups pessoais e builds são ignorados pelo Git; o lockfile npm é versionado.
 As condições das fontes e dos componentes de terceiros continuam aplicáveis.
 
-<details>
-<summary>🔐 Proteção da main e fluxo de contribuição</summary>
-
-O repositório é público e a `main` está protegida contra **exclusão e force push**.
-Alterações devem entrar por **pull request**, com o branch atualizado e o check
-`frontend` aprovado pelo GitHub Actions. Conversas de revisão precisam estar
-resolvidas. As regras também se aplicam aos administradores.
-
-O workflow verifica testes, tipos, auditoria npm e arquivos publicáveis. Não é
-exigida aprovação de uma segunda pessoa, permitindo manutenção individual;
-o pull request e as verificações continuam obrigatórios. Crie uma branch para
-cada alteração e abra um pull request para a `main`.
-
-A `main` é a única branch permanente. Branches de trabalho são temporárias e
-são excluídas após a integração dos pull requests. As propostas automáticas de
-atualização do Dependabot estão desativadas; os alertas de segurança permanecem
-ativos para revisão e atualização manual das dependências.
-
-Consulte a [documentação de branches protegidos do GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
-
-</details>
+Alterações entram por pull request, com branch atualizado, check `frontend`
+aprovado e conversas resolvidas. A `main` é protegida contra exclusão e force push,
+inclusive para administradores. Branches temporárias são excluídas após a integração.
+Os alertas de segurança permanecem ativos; atualizações de dependências são manuais.
