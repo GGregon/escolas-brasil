@@ -1,4 +1,4 @@
-# Escolas Brasil
+# 🗺️ Escolas Brasil
 
 Mapa interativo de **468.099 setores do Censo 2022** e **31.053 escolas privadas
 em atividade em 2025**, com busca por cidade ou escola e filtros por renda.
@@ -6,14 +6,129 @@ em atividade em 2025**, com busca por cidade ou escola e filtros por renda.
 React, TypeScript, Vite, MapLibre GL e PMTiles. As geometrias são carregadas por
 área e zoom; não é necessário banco de dados ou chave de API.
 
-## Instalar e abrir
+![Mapa da região da Barra da Tijuca e Jacarepaguá, no Rio de Janeiro, com setores censitários coloridos por renda e escolas privadas em círculos laranja](docs/imagens/mapa-rio-de-janeiro.png)
+
+*Renda média mensal por setor censitário e localização das escolas privadas no
+Rio de Janeiro. Os controles ficam no painel lateral, com o mapa em tela ampla.*
+
+**[Funcionalidades](#-funcionalidades)** · **[Instalação](#-instalar-e-abrir)** ·
+**[Dados e indicadores](#-dados-e-interpretação)** ·
+**[Desenvolvimento](#-desenvolvimento-e-publicação)**
+
+> [!NOTE]
+> A ferramenta permite explorar o contexto do **local da escola**. A renda do
+> setor não representa a renda dos alunos, das famílias ou da própria instituição.
+
+## ✨ Funcionalidades
+
+| Recurso | O que você pode fazer |
+| --- | --- |
+| 🔎 Busca | Encontrar cidades e escolas pelo nome e direcionar o mapa ao resultado. |
+| 🎨 Indicadores | Alternar entre seis indicadores de renda e domicílios do Censo 2022. |
+| 🎚️ Filtro por intervalo | Mostrar as escolas em setores cujo indicador está na faixa selecionada. |
+| 🏫 Detalhes da escola | Consultar código INEP, matrículas, origem das coordenadas e indicador do setor. |
+| 🫧 Círculos e agrupamentos | Comparar matrículas e explorar escolas próximas agrupadas no mapa. |
+| 🗂️ Camadas | Controlar setores, estados, municípios e escolas, incluindo as geocodificadas. |
+| 📍 Cadastro manual | Incluir uma escola informando nome, latitude e longitude. |
+| 💾 Backup | Exportar e importar os cadastros manuais entre navegadores ou computadores. |
+
+### 🔎 Pesquisar e navegar
+
+Digite o nome de uma cidade ou escola no campo **Pesquisar no mapa**. A busca
+aceita nomes sem acentos; combine escola, cidade e UF para refinar os resultados.
+Você pode restringir a busca a cidades ou escolas. Selecione um resultado com
+o mouse ou pelo teclado e pressione **Enter**:
+
+- **Cidade:** o mapa enquadra os limites do município.
+- **Escola:** o mapa aproxima a coordenada e abre o cartão de informações.
+
+Arraste para navegar e use o scroll para ajustar o zoom. As siglas dos estados
+aparecem na visão mais distante; ao aproximar, surgem nomes de municípios e
+detalhes das ruas. Os rótulos municipais independem da camada de contornos.
+
+![Busca por uma escola em Niterói, com o mapa aproximado, cartão da escola aberto e filtro de renda ativo](docs/imagens/busca-e-filtro.png)
+
+*Exemplo de busca pelo nome da escola, com detalhes da localização e filtro ativo.*
+
+### 🎚️ Filtrar escolas pelo indicador do setor
+
+1. Escolha o indicador no painel — por exemplo, **Renda média mensal**.
+2. Marque **Filtrar escolas pelo setor**.
+3. Arraste as **duas pontas do slider** para definir o intervalo desejado.
+4. Use **Limpar filtro** para voltar a exibir todas as escolas permitidas pelas
+   demais opções de camada.
+
+<img src="docs/imagens/filtro-intervalo.png" alt="Filtro de renda média mensal com um único slider de duas pontas, valores mínimo e máximo e botão Limpar filtro" width="341">
+
+O intervalo inclui os dois extremos. O filtro atualiza os pontos, a busca de
+escolas, os agrupamentos, seus totais de matrículas e o contador. Os setores
+fora da faixa ficam mais discretos para manter a orientação no mapa.
+Ao trocar de indicador, o intervalo volta ao domínio completo do novo indicador.
+As duas pontas também podem ser ajustadas pelo teclado.
+
+> [!IMPORTANT]
+> Com o filtro ativo, uma escola precisa estar associada a **um único setor**
+> com valor publicado dentro do intervalo. Pontos sem associação, com associação
+> ambígua ou com indicador ausente ficam fora do resultado. O slider usa escala
+> não linear para facilitar a seleção de faixas mesmo com valores extremos.
+
+### 🏫 Consultar uma escola
+
+Clique no círculo da escola para abrir o **pop-up junto ao ponto selecionado**.
+O cartão apresenta nome, município/UF, código INEP, matrículas de 2025, origem
+das coordenadas e, quando disponível, código do setor e valor do indicador.
+Quando há escolas na mesma coordenada, o seletor do cartão permite alternar
+entre elas.
+
+![Pop-up da Escola Eleva no Rio de Janeiro, mostrando código INEP, matrículas, origem das coordenadas e renda média mensal do setor](docs/imagens/detalhes-escola.png)
+
+*O cartão mantém as informações próximas da escola, sem ocupar o painel de controles.*
+
+A **área dos círculos** representa o total conhecido de matrículas da educação
+básica. Escolas sem esse total usam um marcador de referência. Ao afastar o
+mapa, escolas próximas podem formar agrupamentos; clique neles para aproximar.
+Os agrupamentos somam matrículas conhecidas, com escala reduzida e tamanho limitado.
+
+> [!NOTE]
+> `QT_MAT_BAS` conta **matrículas**, não alunos distintos. Os tamanhos dos
+> agrupamentos e dos pontos individuais usam escalas diferentes.
+
+### 🗂️ Controlar camadas e cores
+
+Ative ou oculte **setores censitários**, **estados**, **municípios** e
+**escolas privadas**. A opção **Incluir geocodificadas** controla os pontos
+com posição aproximada; a origem fica disponível no cartão da escola.
+
+A legenda usa **verde para valores menores e azul para maiores**.
+Setores sem informação aparecem em **branco**. As cores seguem classes do
+indicador escolhido, preservam os limites dos setores e não têm suavização.
+Ao aproximar, o preenchimento fica mais transparente para facilitar a leitura
+das ruas na base Bright.
+
+### 📍 Cadastrar escolas e guardar backups
+
+Abra **Adicionar escola** e informe **nome, latitude e longitude**, em graus
+decimais. O ponto passa a aparecer no mapa e na busca. Cadastros manuais não
+recebem código INEP ou matrículas estimadas e podem ser excluídos individualmente.
+
+Use **Exportar backup** para salvar os cadastros em JSON e **Importar backup**
+para recuperá-los ou transferi-los para outro navegador ou computador.
+
+> [!WARNING]
+> Os cadastros manuais ficam **somente no navegador**, vinculados ao endereço
+> e à porta da aplicação. Não existe sincronização ou banco compartilhado.
+> Exporte um backup antes de limpar os dados do navegador ou mudar de endereço.
+
+## 🚀 Instalar e abrir
 
 Requisitos: Git, **Node.js 22.12+ ou 24+**, npm e **Python 3.11+** para instalar os
 dados. Internet é necessária para download e para a base Bright/OpenFreeMap.
 Use um navegador atualizado com WebGL.
 
-O repositório é privado: o mantenedor precisa conceder acesso à sua conta GitHub.
-Autentique seu Git por HTTPS antes de clonar.
+> [!IMPORTANT]
+> O repositório é **privado**: o mantenedor precisa conceder acesso à sua conta
+> GitHub. Autentique seu Git por HTTPS antes de clonar. O mesmo acesso é
+> necessário para baixar o pacote de dados pela release.
 
 ```sh
 git clone https://github.com/GGregon/escolas-brasil.git
@@ -46,20 +161,24 @@ definir `GITHUB_TOKEN` apenas no ambiente do processo, com leitura do repositór
 Nunca salve tokens em arquivos ou no Git. Não há `.env` obrigatório ou variável
 `VITE_*` para configurar.
 
-## Como usar
+## 📊 Dados e interpretação
 
-- Pesquise cidade ou escola. Enter ou clique direciona o mapa ao resultado.
-- Escolha um dos seis indicadores do Censo. Verde indica valores menores e azul,
-  maiores. Branco indica ausência ou supressão de informação.
-- Ative o filtro pelo setor e ajuste as duas pontas do slider. Busca, pontos,
-  agrupamentos e totais respeitam o intervalo selecionado.
-- Clique na escola para abrir seus dados. A área dos círculos representa
-  matrículas da educação básica, não alunos distintos.
-- Ative ou oculte setores, estados, municípios e escolas geocodificadas.
-- Adicione escola com nome, latitude e longitude. Esses cadastros ficam **somente
-  no navegador**; use Exportar/Importar backup para preservar ou transferir.
+### Indicadores disponíveis
 
-## Dados e interpretação
+| Código | Indicador | Unidade |
+| --- | --- | --- |
+| `V06001` | Pessoas responsáveis por domicílios particulares permanentes ocupados | Pessoas |
+| `V06002` | Moradores nesses domicílios | Moradores |
+| `V06003` | Variância do número de moradores nesses domicílios | Moradores² |
+| `V06004` | Rendimento nominal médio mensal dos responsáveis com rendimento | R$ |
+| `V06005` | Variância desse rendimento | R$² |
+| `V06006` | Rendimento nominal mediano mensal dos responsáveis com rendimento | R$ |
+
+Os valores monetários são **nominais de 2022**. A renda média e a mediana
+consideram os responsáveis **com rendimento**. As variâncias descrevem a
+dispersão e têm unidades ao quadrado; não são valores de renda ou contagens.
+
+### Fontes e cobertura
 
 | Camada | Fonte e referência |
 | --- | --- |
@@ -78,7 +197,7 @@ ambíguos ou sem informação.
 
 [Dicionário e fontes](docs/DADOS.md) · [Cobertura e precisão](docs/ESCOLAS.md)
 
-## Desenvolvimento e publicação
+## 🛠️ Desenvolvimento e publicação
 
 ```sh
 cd frontend
@@ -113,3 +232,20 @@ notebooks/             Exploração original, sem saídas salvas
 Dados brutos, arquivos preparados, ambientes locais, dependências instaladas,
 backups pessoais e builds são ignorados pelo Git; o lockfile npm é versionado.
 As condições das fontes e dos componentes de terceiros continuam aplicáveis.
+
+<details>
+<summary>🔐 Nota para mantenedores: aviso de proteção da main</summary>
+
+O aviso **“Your main branch isn't protected”** trata das regras de alteração do
+branch no GitHub. Ele não é um erro da aplicação nem significa que o repositório
+privado esteja público. A proteção pode restringir exclusão, force push ou exigir
+revisões e verificações antes de mesclar alterações.
+
+O workflow de CI do projeto verifica testes, tipos, auditoria npm e arquivos
+publicáveis. Ter esse workflow não significa, por si só, que seu resultado seja
+obrigatório para alterações na `main`. As regras efetivas e os recursos disponíveis
+dependem da configuração e do plano da conta no GitHub.
+
+Consulte a [documentação de branches protegidos do GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
+
+</details>
