@@ -53,6 +53,9 @@ mantenedor. Nenhuma etapa altera sua visibilidade.
 - 26 testes TypeScript e cinco testes Python do instalador aprovados.
 - TypeScript e build de produção aprovados; instalação do pacote completo em
   diretório vazio conferida com hashes de todos os arquivos.
+- Clone limpo conferido com instalação de dependências, 26 testes e build.
+- Release privada publicada; o SHA-256 informado pelo GitHub coincide com o
+  catálogo local. O CI do primeiro commit foi aprovado também no GitHub Actions.
 - Verificação HTTP de dev e produção: worker JavaScript, HTTP Range dos PMTiles,
   31.053 escolas, 5.597 rótulos e ausência de informação em branco.
 - Conferência integral dos setores e das associações espaciais executada contra
@@ -61,6 +64,8 @@ mantenedor. Nenhuma etapa altera sua visibilidade.
   por SHA, com permissão somente de leitura e sem persistir credenciais do checkout.
 - Dependabot acompanha npm, Python e GitHub Actions. Os avisos de segurança devem
   ser revistos periodicamente; os resultados acima refletem a data da consulta.
+- Alertas de vulnerabilidade e atualizações automáticas de segurança habilitados
+  no repositório, mantendo sua visibilidade privada.
 
 O CI não executa o processamento nacional ou as verificações HTTP sem dados.
 A revisão não é um pentest nem uma garantia de ausência de vulnerabilidades.

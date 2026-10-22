@@ -7,11 +7,11 @@ Bright adaptado: vias neutras, rótulos locais e pontos de interesse filtrados.
 Fontes censitárias: IBGE 2022; INEP 2025 V2; Ipea/geobr 2025.
 Documentação: https://github.com/GGregon/escolas-brasil
 
-Copyright (c) 2024, MapTiler.com & OpenMapTiles contributors.  
-Copyright (c) 2014, Mapbox.  
+Copyright (c) 2024, MapTiler.com & OpenMapTiles contributors.
+Copyright (c) 2014, Mapbox.
 All rights reserved.
 
-Modifications by MapTiler.com & OpenMapTiles contributors.  
+Modifications by MapTiler.com & OpenMapTiles contributors.
 Derived from "Mapbox Open Styles" https://github.com/mapbox/mapbox-gl-styles
 
 # Code license: BSD 3-Clause License
@@ -66,7 +66,7 @@ For printed and static maps a similar attribution should be made in a textual
 description near the image, in the same fashion as if you cite a photograph.
 
 Exceptions to OpenMapTiles attribution requirement can be in a written form granted
-by MapTiler AG (info@maptiler.com).  
+by MapTiler AG (info@maptiler.com).
 The project contributors grant MapTiler AG the license to give such
 exceptions on a commercial basis.
 
