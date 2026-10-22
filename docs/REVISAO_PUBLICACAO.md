@@ -71,10 +71,12 @@ seções abaixo registram o estado da revisão e distribuição iniciais.
   as tabelas e geometrias locais.
 - CI verifica testes, tipos, auditoria npm e arquivos publicáveis; Actions fixadas
   por SHA, com permissão somente de leitura e sem persistir credenciais do checkout.
-- Dependabot acompanha npm, Python e GitHub Actions. Os avisos de segurança devem
-  ser revistos periodicamente; os resultados acima refletem a data da consulta.
-- Alertas de vulnerabilidade e atualizações automáticas de segurança habilitados
-  no repositório, mantendo sua visibilidade privada.
+- Na preparação inicial, foram habilitados alertas e propostas automáticas do
+  Dependabot para npm, Python e GitHub Actions. Posteriormente, por decisão do
+  mantenedor, as propostas de versão e as correções automáticas de segurança
+  foram desativadas. Os alertas de vulnerabilidade permanecem ativos; cabe ao
+  mantenedor revisar e aplicar as atualizações. Os resultados da auditoria acima
+  refletem a data da consulta.
 
 O CI não executa o processamento nacional ou as verificações HTTP sem dados.
 A revisão não é um pentest nem uma garantia de ausência de vulnerabilidades.
