@@ -126,9 +126,8 @@ dados. Internet é necessária para download e para a base Bright/OpenFreeMap.
 Use um navegador atualizado com WebGL.
 
 > [!IMPORTANT]
-> O repositório é **privado**: o mantenedor precisa conceder acesso à sua conta
-> GitHub. Autentique seu Git por HTTPS antes de clonar. O mesmo acesso é
-> necessário para baixar o pacote de dados pela release.
+> O repositório e o pacote de dados são **públicos**. Você pode clonar o projeto
+> e baixar a release sem convite, login ou token do GitHub.
 
 ```sh
 git clone https://github.com/GGregon/escolas-brasil.git
@@ -148,18 +147,17 @@ e verifica tamanho e SHA-256 do ZIP e de cada arquivo antes da instalação.
 O pacote tem aproximadamente **414 MB**; reserve pelo menos **2 GB livres**
 para download, validação e instalação. Os dados ficam separados do código.
 
-Em repositórios privados, o instalador usa a credencial Git HTTPS já salva no
-computador. Se sua autenticação for somente SSH, baixe o ZIP pela página da
-release, estando logado no navegador, e instale a partir da raiz:
+Para instalar sem o download automático, baixe o ZIP pela página da release
+e execute a partir da raiz:
 
 ```sh
 python scripts/baixar_dados.py --arquivo "caminho/dados-mapa-v1.zip"
 ```
 
-O mantenedor também pode compartilhar esse mesmo ZIP. Para automação, é possível
-definir `GITHUB_TOKEN` apenas no ambiente do processo, com leitura do repositório.
-Nunca salve tokens em arquivos ou no Git. Não há `.env` obrigatório ou variável
-`VITE_*` para configurar.
+O mantenedor também pode compartilhar esse mesmo ZIP. Não há `.env` obrigatório,
+token ou variável `VITE_*` para configurar. O instalador também aceita credenciais
+Git HTTPS ou `GITHUB_TOKEN` para cópias privadas do projeto; nunca salve tokens
+em arquivos ou no Git.
 
 ## 📊 Dados e interpretação
 
@@ -214,7 +212,7 @@ pelo mapa. O preview abre em **http://127.0.0.1:4173/**.
 
 Para hospedar, sirva `frontend/dist/` em HTTPS com **HTTP Range
 (`206 Partial Content`)** para `.pmtiles`. Preserve os créditos do mapa.
-O repositório e sua release privados não criam um site acessível por si só.
+O repositório e sua release públicos não criam um site hospedado por si só.
 
 [Pipeline e validações](docs/DESENVOLVIMENTO.md) · [Contribuir](CONTRIBUTING.md) ·
 [Segurança](SECURITY.md) · [Revisão](docs/REVISAO_PUBLICACAO.md) ·
@@ -234,17 +232,17 @@ backups pessoais e builds são ignorados pelo Git; o lockfile npm é versionado.
 As condições das fontes e dos componentes de terceiros continuam aplicáveis.
 
 <details>
-<summary>🔐 Nota para mantenedores: aviso de proteção da main</summary>
+<summary>🔐 Proteção da main e fluxo de contribuição</summary>
 
-O aviso **“Your main branch isn't protected”** trata das regras de alteração do
-branch no GitHub. Ele não é um erro da aplicação nem significa que o repositório
-privado esteja público. A proteção pode restringir exclusão, force push ou exigir
-revisões e verificações antes de mesclar alterações.
+O repositório é público e a `main` está protegida contra **exclusão e force push**.
+Alterações devem entrar por **pull request**, com o branch atualizado e o check
+`frontend` aprovado pelo GitHub Actions. Conversas de revisão precisam estar
+resolvidas. As regras também se aplicam aos administradores.
 
-O workflow de CI do projeto verifica testes, tipos, auditoria npm e arquivos
-publicáveis. Ter esse workflow não significa, por si só, que seu resultado seja
-obrigatório para alterações na `main`. As regras efetivas e os recursos disponíveis
-dependem da configuração e do plano da conta no GitHub.
+O workflow verifica testes, tipos, auditoria npm e arquivos publicáveis. Não é
+exigida aprovação de uma segunda pessoa, permitindo manutenção individual;
+o pull request e as verificações continuam obrigatórios. Crie uma branch para
+cada alteração e abra um pull request para a `main`.
 
 Consulte a [documentação de branches protegidos do GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 

@@ -1,8 +1,17 @@
 # Revisão para publicação
 
 Revisão realizada em 22/10/2026, para publicação em
-`GGregon/escolas-brasil`. O repositório é **privado**, conforme decisão do
-mantenedor. Nenhuma etapa altera sua visibilidade.
+`GGregon/escolas-brasil`. A publicação inicial foi privada. Em 22/10/2026,
+o mantenedor autorizou torná-lo **público** para habilitar a proteção da `main`.
+
+## Atualização de visibilidade e proteção
+
+O código e a release de dados passaram a ser públicos. O acesso não exige convite
+ou autenticação. A `main` exige pull request, check `frontend` do GitHub Actions
+aprovado, branch atualizado e conversas resolvidas. Exclusão e force push estão
+bloqueados, inclusive para administradores. Não se exige aprovação de outra
+pessoa para permitir manutenção individual. As menções à publicação privada nas
+seções abaixo registram o estado da revisão e distribuição iniciais.
 
 ## Arquivos e credenciais
 
