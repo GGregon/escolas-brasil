@@ -1,0 +1,184 @@
+{
+  "repository": "GGregon/escolas-brasil",
+  "tag": "dados-v1",
+  "asset": "dados-mapa-v1.zip",
+  "bytes": 413974012,
+  "sha256": "490f6c1cfef125c82e0e2637456cec20b1a8f24591c13a0ba068f424ee72f33e",
+  "files": [
+    {
+      "path": "manifest.json",
+      "bytes": 7373,
+      "sha256": "2f692b35411a2acb7164841edaebedc3f91acf0434b34179c90ae5ffc6dd2824"
+    },
+    {
+      "path": "escolas.json",
+      "bytes": 4028912,
+      "sha256": "5b9fbe38cd555e0882000fd270a4f0f54b29d1986b09882dc4f83b1d6b21c0e0"
+    },
+    {
+      "path": "escolas_setores.json",
+      "bytes": 2278098,
+      "sha256": "bb629efeb003f60eaa45f7a9d9578f197e1af213b8471298baef674b1919a1ab"
+    },
+    {
+      "path": "rotulos.geojson",
+      "bytes": 1334350,
+      "sha256": "f659a4ced9e0bbfc834e6c1e2c29f987dbe9d41a788dad6dfa35805aa9839ed4"
+    },
+    {
+      "path": "tiles/estados.pmtiles",
+      "bytes": 3583930,
+      "sha256": "37e49640d62d19d3ad86d6d947b9c6d8cec66f169a6b8c146bf0c3af0afd4d83"
+    },
+    {
+      "path": "tiles/municipios.pmtiles",
+      "bytes": 36224715,
+      "sha256": "c30b35b1029e002796a57354a1ce99c4ca41f48a0eceae3cbc33a021ea224cca"
+    },
+    {
+      "path": "tiles/escolas-v2.pmtiles",
+      "bytes": 7220121,
+      "sha256": "0262e6c324720506e761cec42314a4beb30ae5dcc8f7a69746b3c20b56ca2f11"
+    },
+    {
+      "path": "tiles/escolas-inep-v2.pmtiles",
+      "bytes": 6327390,
+      "sha256": "1b55a62e36b4e4c9a43e2bc5db6e71b15bf21720a283f3f78fc799c4d1b889ce"
+    },
+    {
+      "path": "tiles/setores-11.pmtiles",
+      "bytes": 4694833,
+      "sha256": "88f4df1c825735bde10da951c220a3af58411659ff5d97f60ff50b4fa64aefda"
+    },
+    {
+      "path": "tiles/setores-12.pmtiles",
+      "bytes": 4115636,
+      "sha256": "43513a921a7b56d2f2df7fc8aea9e862ae78da7ed6ef3a8b690f8385339c0b7e"
+    },
+    {
+      "path": "tiles/setores-13.pmtiles",
+      "bytes": 20758423,
+      "sha256": "b084479e55ccd21ac66934ee20b711f59d6905f1d2801f0bdd05e44cfce616cc"
+    },
+    {
+      "path": "tiles/setores-14.pmtiles",
+      "bytes": 3101133,
+      "sha256": "886e66d52557c3cd5ea24b2e163a783205bf4b506cdc9b200319b782df5ee639"
+    },
+    {
+      "path": "tiles/setores-15.pmtiles",
+      "bytes": 20984334,
+      "sha256": "ce70392ffb582f646f4ece3af4d15f35c3a918684ad2c364098be1cc9669e832"
+    },
+    {
+      "path": "tiles/setores-16.pmtiles",
+      "bytes": 1974951,
+      "sha256": "79384bf7c1680993bc0a63c6911e2d8781df129d962c1299ca884a369522a46d"
+    },
+    {
+      "path": "tiles/setores-17.pmtiles",
+      "bytes": 7748491,
+      "sha256": "c1fe36651a54dd488598a850dc01fc102310e3e22d462246e1395fe225e5c481"
+    },
+    {
+      "path": "tiles/setores-21.pmtiles",
+      "bytes": 14829554,
+      "sha256": "991251ebccd52db86468a17cfff96c3ee21bc4964ec309d24d32d1034427659b"
+    },
+    {
+      "path": "tiles/setores-22.pmtiles",
+      "bytes": 8228402,
+      "sha256": "2465930f0e326614ebaa994bead4a33a36bc091f7da09f1fcfe047eb10cd9a51"
+    },
+    {
+      "path": "tiles/setores-23.pmtiles",
+      "bytes": 13516361,
+      "sha256": "67094e10d74f80548461813d6b7ec19987dbe92bacdf0537c774c95d90c93e26"
+    },
+    {
+      "path": "tiles/setores-24.pmtiles",
+      "bytes": 3845942,
+      "sha256": "b38f703cc8bfcc81e83476ac396b2b3aa8907fa83933a177d70e92d849484420"
+    },
+    {
+      "path": "tiles/setores-25.pmtiles",
+      "bytes": 6426593,
+      "sha256": "62f45550c00a08d721033c1d08d562fa0e94fa5b17afbc7d6a79dcf9516cd507"
+    },
+    {
+      "path": "tiles/setores-26.pmtiles",
+      "bytes": 11423785,
+      "sha256": "cdb0fa6b80554fcd06ac3d162fa27d5e3e27ed4973816fbab6bb5f4298336b93"
+    },
+    {
+      "path": "tiles/setores-27.pmtiles",
+      "bytes": 3985674,
+      "sha256": "e7919268a6abe74958e17266de3894958495d296307ef03f8dbb491a4e9d1669"
+    },
+    {
+      "path": "tiles/setores-28.pmtiles",
+      "bytes": 3224582,
+      "sha256": "960969314cb04377cdff84fbc7922c8b4c94821d39c8972b1d298535a1465474"
+    },
+    {
+      "path": "tiles/setores-29.pmtiles",
+      "bytes": 28232370,
+      "sha256": "ee97b08500bfcd9dd7d42d3bfd28e6f5a1691f5d6914aa8fe14ca204c4e01cd5"
+    },
+    {
+      "path": "tiles/setores-31.pmtiles",
+      "bytes": 44975222,
+      "sha256": "7480360ea1ba0420dcdb72039199f60219becc6854e781eacb20dd214919e899"
+    },
+    {
+      "path": "tiles/setores-32.pmtiles",
+      "bytes": 5818910,
+      "sha256": "6098139a39570f3225ab6ce6df0430ce73da8796c103f479e0a63790a2dc8a5a"
+    },
+    {
+      "path": "tiles/setores-33.pmtiles",
+      "bytes": 16990328,
+      "sha256": "aa5f289dec608638e739a8eaf1c23e3757c047939cab973908082754ae7c04d6"
+    },
+    {
+      "path": "tiles/setores-35.pmtiles",
+      "bytes": 47759096,
+      "sha256": "04e6e93e4a20f1863afed2b585ce96da491bf7746b63a51c291d338467ff4ac9"
+    },
+    {
+      "path": "tiles/setores-41.pmtiles",
+      "bytes": 20010410,
+      "sha256": "b4b4e04202bc6ed39cdb7bff3e15705885b40de2e49200b523fb58ff859f9eee"
+    },
+    {
+      "path": "tiles/setores-42.pmtiles",
+      "bytes": 13201837,
+      "sha256": "cc9d77ea127c54c0d7145ad6c966b51c00f24163eb7be8a52ff6c63860c780ce"
+    },
+    {
+      "path": "tiles/setores-43.pmtiles",
+      "bytes": 21464272,
+      "sha256": "b7cfe022c007bc1452a3353eef5f1399e4ceb093e3631505fcd397982ab664a3"
+    },
+    {
+      "path": "tiles/setores-50.pmtiles",
+      "bytes": 8178324,
+      "sha256": "0727a780351eb963de8535101ef830d8fc0db6f5d912928656bcfde1238ef920"
+    },
+    {
+      "path": "tiles/setores-51.pmtiles",
+      "bytes": 18443336,
+      "sha256": "2069fe0b059e7d5604c3da59a7ffdcfc5698a02c2268e80e63cc60bc3221fa3e"
+    },
+    {
+      "path": "tiles/setores-52.pmtiles",
+      "bytes": 15343641,
+      "sha256": "75c8dc3aacb6afe1f034907df9a300ec1b8f144d5d9de99a824ce77230a99d22"
+    },
+    {
+      "path": "tiles/setores-53.pmtiles",
+      "bytes": 2125861,
+      "sha256": "6f67c709d8048a1a74c6bb4db436ad4ee92c1b0d39abd9e56c9d2a4fb1911ed0"
+    }
+  ]
+}
