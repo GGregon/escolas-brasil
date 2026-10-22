@@ -244,6 +244,11 @@ exigida aprovação de uma segunda pessoa, permitindo manutenção individual;
 o pull request e as verificações continuam obrigatórios. Crie uma branch para
 cada alteração e abra um pull request para a `main`.
 
+A `main` é a única branch permanente. Branches de trabalho são temporárias e
+são excluídas após a integração dos pull requests. As propostas automáticas de
+atualização do Dependabot estão desativadas; os alertas de segurança permanecem
+ativos para revisão e atualização manual das dependências.
+
 Consulte a [documentação de branches protegidos do GitHub](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/managing-protected-branches/about-protected-branches).
 
 </details>
