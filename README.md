@@ -1,3 +1,5 @@
+![Escolas Brasil](docs/imagens/hero-img.png)
+
 # 🗺️ Escolas Brasil
 
 Mapa interativo de **468.099 setores do Censo 2022** e **31.053 escolas privadas
